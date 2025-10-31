@@ -1,4 +1,4 @@
-![WhatsApp Image 2025-10-31 at 23 35 05_5620b6fd](https://github.com/user-attachments/assets/28b54b88-81a4-4d9e-b538-79e0bd3ef388)![WhatsApp Image 2025-10-31 at 23 29 06_0784035c](https://github.com/user-attachments/assets/9bc467a3-0253-4ff1-bade-951451d8d9df)![WhatsApp Image 2025-10-31 at 23 44 21_fc2ca5f5](https://github.com/user-attachments/assets/4e6186f9-07f5-431c-ab16-8dd8aa07b998)# Bandgap Reference Design
+# Bandgap Reference Design
 
 This project documents my work on the Bandgap Reference circuit using the Sky130 PDK.
 
