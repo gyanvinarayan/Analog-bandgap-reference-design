@@ -676,7 +676,7 @@ In this simulation, we should get the reference voltage as an **umbrella-shaped 
 ![WhatsApp Image 2025-10-31 at 22 56 07_82283ee4](https://github.com/user-attachments/assets/05041a0b-f0fc-482b-9a7d-f5b890645f5d)
 ![WhatsApp Image 2025-10-31 at 22 56 38_3c8125c6](https://github.com/user-attachments/assets/9ff6203a-208f-44a9-b8a4-546780f609c8)
 ![WhatsApp Image 2025-10-31 at 23 04 14_2dcd7ff6](https://github.com/user-attachments/assets/bc794b2c-1c02-4c65-899c-ea609da0e5a6)
-![Uploading WhatsApp Image 2025-10-31 at 23.08.34_b03a69ee.jpg…]()
+![WhatsApp Image 2025-10-31 at 23 08 34_b03a69ee](https://github.com/user-attachments/assets/268dd8c9-dbed-4ca0-a683-5b4476feef49)
 ![WhatsApp Image 2025-10-31 at 23 09 18_1943ca2f](https://github.com/user-attachments/assets/fc181e1a-8162-4875-80dc-bcc43e602ccf)
 ![WhatsApp Image 2025-10-31 at 23 11 03_e0078ee3](https://github.com/user-attachments/assets/a5d2da18-1d79-467a-ac94-fe8c533f2b15)
 
