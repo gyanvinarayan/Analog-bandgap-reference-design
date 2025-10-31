@@ -1,4 +1,4 @@
-# Bandgap Reference Design
+![WhatsApp Image 2025-10-31 at 23 35 05_5620b6fd](https://github.com/user-attachments/assets/28b54b88-81a4-4d9e-b538-79e0bd3ef388)![WhatsApp Image 2025-10-31 at 23 29 06_0784035c](https://github.com/user-attachments/assets/9bc467a3-0253-4ff1-bade-951451d8d9df)![WhatsApp Image 2025-10-31 at 23 44 21_fc2ca5f5](https://github.com/user-attachments/assets/4e6186f9-07f5-431c-ab16-8dd8aa07b998)# Bandgap Reference Design
 
 This project documents my work on the Bandgap Reference circuit using the Sky130 PDK.
 
@@ -628,9 +628,9 @@ ngspice ctat_voltage_gen.sp
 
 After simulation we can get a wavefrom like below, and from the wavefrom we can see the CTAT behaviour of the BJT, and can find the slope.
 
-<img width="911" height="659" alt="Screenshot 2025-10-29 170822" src="https://github.com/user-attachments/assets/eaf920cc-0284-4cbc-ac74-c9c0dd8ae2f8" />
+![WhatsApp Image 2025-10-31 at 21 52 47_01e09db6](https://github.com/user-attachments/assets/ea25c29d-454e-40dc-a3c8-52f3d1f34c56)
+![WhatsApp Image 2025-10-31 at 22 14 30_10c9c2d9](https://github.com/user-attachments/assets/f4120c83-86cb-47c6-8ad7-13a8bfe2764d)
 
-<img width="926" height="589" alt="Screenshot 2025-10-29 172431" src="https://github.com/user-attachments/assets/e4defc35-d568-459d-b876-5e8c0d4509ba" />
 
 ### CTAT Voltage generation with Multiple BJT netlist
 
@@ -641,13 +641,14 @@ In this simulation we will check the CTAT voltage across the 8 parallel connecte
 
 we can see the slope is increasing in case of multiple BJTs.
 
-### CTAT Voltage generation with different current source values netlist
-<img width="945" height="737" alt="Screenshot 2025-10-29 173850" src="https://github.com/user-attachments/assets/5aa8fa5b-4063-4cc9-a154-9024c2f36fb9" />
-
 ### 3.4.2  PTAT Simulation
 
 #### PTAT Voltage generation with VCVS
-<img width="1668" height="801" alt="Screenshot 2025-10-30 121222" src="https://github.com/user-attachments/assets/450abfb4-5814-45b1-b4b2-369d50996ab0" />
+![WhatsApp Image 2025-10-31 at 22 24 55_e5268dd1](https://github.com/user-attachments/assets/49be7c29-981f-4593-95aa-51b5d0fce00a)
+![WhatsApp Image 2025-10-31 at 22 32 19_525fb93e](https://github.com/user-attachments/assets/fbf28ae8-ad19-4675-a96b-c922f91f45fe)
+![WhatsApp Image 2025-10-31 at 22 39 36_8a7ecc4e](https://github.com/user-attachments/assets/6e152c66-fa18-406c-b486-386559af4509)
+
+
 ## 3.4.3 ⚙️ Resistance Temperature Coefficient (Tempco)
 
 ### 🧠 Theory  
@@ -661,345 +662,45 @@ we can see the slope is increasing in case of multiple BJTs.
 - Therefore, the voltage across the resistor behaves as a **PTAT voltage**.  
 - In a Bandgap Reference (BGR) circuit, this PTAT voltage adds to the thermal voltage from the BJT to cancel the CTAT behavior.
 
-  <img width="1594" height="669" alt="Screenshot 2025-10-31 153409" src="https://github.com/user-attachments/assets/62894e4b-dc09-4867-b6da-942f0fa2965e" />
-
 ### 🖥️ Simulation Command
 ```spice 
 cd /workspaces/vsd-bandgap/bandgap/prelayout/
 ngspice res_tempco.sp
 ```
-Also we can find the PTAT voltages across the resistance for different current values from the following curve.
-<img width="847" height="706" alt="Screenshot 2025-10-31 171039" src="https://github.com/user-attachments/assets/ee692fff-3951-4e81-97c5-9390213c635b" />
 
 ### 3.4.4 BGR using Ideal OpAmp
 
 Now after simulating all our components, let's quick check our BGR behaviour using one **VCVS** as an **ideal OpAmp**.
 
 In this simulation, we should get the reference voltage as an **umbrella-shaped curve** and it should be approximately **1.2V**.
-```spice
-*** bgr using ideal opamp (vcvs) *****
-
-.lib "/opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt"
-
-.global vdd gnd
-.temp 27
-
-*** vcvs definition
-e1 net2 gnd ra1 qp1 gain=1000
+![WhatsApp Image 2025-10-31 at 22 56 07_82283ee4](https://github.com/user-attachments/assets/05041a0b-f0fc-482b-9a7d-f5b890645f5d)
+![WhatsApp Image 2025-10-31 at 22 56 38_3c8125c6](https://github.com/user-attachments/assets/9ff6203a-208f-44a9-b8a4-546780f609c8)
+![WhatsApp Image 2025-10-31 at 23 04 14_2dcd7ff6](https://github.com/user-attachments/assets/bc794b2c-1c02-4c65-899c-ea609da0e5a6)
+![Uploading WhatsApp Image 2025-10-31 at 23.08.34_b03a69ee.jpg…]()
+![WhatsApp Image 2025-10-31 at 23 09 18_1943ca2f](https://github.com/user-attachments/assets/fc181e1a-8162-4875-80dc-bcc43e602ccf)
+![WhatsApp Image 2025-10-31 at 23 11 03_e0078ee3](https://github.com/user-attachments/assets/a5d2da18-1d79-467a-ac94-fe8c533f2b15)
 
 
-xmp1    qp1     net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmp2    ra1     net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmp3    ref     net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
 
-*** bjt definition
-xqp1    gnd     gnd     qp1             sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
-xqp2    gnd     gnd     qp2          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=8
-xqp3    gnd     gnd     qp3          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
 
-*** high-poly resistance definition
-xra1    ra1     na1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xra2    na1     na2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xra3    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xra4    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-
-xrb1    ref     nb1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb2    nb1     nb2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb3    nb2     nb3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb4    nb3     nb4     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb5    nb4     nb5     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb6    nb5     nb6     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb7    nb6     nb7     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb8    nb7     nb8     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb9    nb8     nb9     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb10   nb9     nb10    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb11   nb10    nb11    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb12   nb11    nb12    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb13   nb12    nb13    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb14   nb13    nb14    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb15   nb14    nb15    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb16   nb15    nb16    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb17   nb16    nb17    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb18   nb17    nb18    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb19   nb18    nb19    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb20   nb19    nb20    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41        l=7.8
-xrb21   nb20    nb21    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb22   nb21    nb22    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41        l=7.8
-xrb23   nb22    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-xrb24   nb22    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41       l=7.8
-
-*** voltage source for current measurement
-
-*** supply voltage
-vsup    vdd     gnd     dc      2
-*.dc    vsup    0       3.3     0.3.3
-
-.dc     temp    -40     125     5
-
-*vsup    vdd     gnd     pulse   0       2       10n     1u      1u      1m      100u
-*.tran   5n      10u
-
-.control
-RUN
-plot v(vdd) v(qp1) v(ra1) v(qp2) v(ref) v(qp3)
-plot v(ref)
-
-.endc
-.end
-```
-<img width="849" height="729" alt="Screenshot 2025-10-30 135631" src="https://github.com/user-attachments/assets/5c92affc-e989-4db8-9814-97929159f43e" />
-<img width="926" height="486" alt="Screenshot 2025-10-30 135732" src="https://github.com/user-attachments/assets/8f676c81-5902-4239-89a9-0e23c9610bcd" />
-<img width="886" height="680" alt="Screenshot 2025-10-30 135839" src="https://github.com/user-attachments/assets/fac527cb-056a-4c4d-9a70-12d01c502d1c" />
-<img width="1595" height="693" alt="Screenshot 2025-10-30 140003" src="https://github.com/user-attachments/assets/c4a4627c-bf06-407b-9062-8cf72d657c42" />
-<img width="780" height="397" alt="Screenshot 2025-10-30 140140" src="https://github.com/user-attachments/assets/6cba83d9-dabc-4398-9eed-5fa986ca86bf" />
-<img width="910" height="677" alt="Screenshot 2025-10-30 140355" src="https://github.com/user-attachments/assets/04747cd3-fe1b-4d25-8a6a-4ade8f5e17c0" />
 
 ### 3.4.5 BGR with selfbias current mirror
-Now we will replace the ideal Op-Amp with self-biased current mirror which is our proposed design. We expect same type of output as in case of ideal OpAmp based BGR. We will also check for different corners, and will see how our circuit is performing in different corners. 
- ### tt corner stimulation
- ```spice
- **** bandgap reference circuit using self-biase current mirror *****
+Now we will replace the ideal Op-Amp with self-biased current mirror which is our proposed design. We expect same type of output as in case of ideal OpAmp based BGR. We will also check for different corners, and will see how our circuit is performi
+![WhatsApp Image 2025-10-31 at 23 25 34_14440ced](https://github.com/user-attachments/assets/f9303e81-6a2c-4018-bfce-a52c592bc7ed)
+ng in different corners. 
+![WhatsApp Image 2025-10-31 at 23 29 06_0784035c](https://github.com/user-attachments/assets/6189e9b8-e9fb-43f3-b931-5e414235491c)
+![WhatsApp Image 2025-10-31 at 23 35 05_5620b6fd](https://github.com/user-attachments/assets/248220c0-914b-4dc0-a0d5-40b950ada458)
+![WhatsApp Image 2025-10-31 at 23 37 13_3e9e9184](https://github.com/user-attachments/assets/b1057c56-df29-4e27-b523-7b7767d63d5e)
+![WhatsApp Image 2025-10-31 at 23 44 21_fc2ca5f5](https://github.com/user-attachments/assets/c02da9e8-f50c-44bc-9c5b-0b1d1def0453)
+![WhatsApp Image 2025-10-31 at 23 44 43_479f813c](https://github.com/user-attachments/assets/c3ceec54-e195-4049-a327-394a60739170)
+![WhatsApp Image 2025-10-31 at 23 46 27_ccde52be](https://github.com/user-attachments/assets/382df9ca-f271-4698-8789-de61d600fbea)
+![WhatsApp Image 2025-11-01 at 01 28 31_ef5744f6](https://github.com/user-attachments/assets/e0ec7d2d-f7e7-47aa-adae-895bf468a1d1)
+![WhatsApp Image 2025-11-01 at 01 28 32_9352d5ce](https://github.com/user-attachments/assets/4ceb2435-7830-4087-ac69-4900e5c6704e)
+![WhatsApp Image 2025-11-01 at 01 28 32_b99aec26](https://github.com/user-attachments/assets/56debd27-0d89-4c1c-b117-75f0fe52ca83)
+![WhatsApp Image 2025-11-01 at 01 28 32_e750a9ea](https://github.com/user-attachments/assets/0762a4db-e832-4ceb-aee2-023ca595e7c3)
+![WhatsApp Image 2025-11-01 at 01 28 33_6c81b7c0](https://github.com/user-attachments/assets/61102a5e-cd7a-43a9-9c5b-4dc866fad4db)
 
-.lib "/opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt"
 
-.global vdd gnd
-.temp 27
-
-*** circuit definition ***
-
-*** mosfet definitions self-biased current mirror and output branch
-xmp1    net1    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmp2    net2    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmp3    net3    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmn1    net1    net1    q1      gnd     sky130_fd_pr__nfet_01v8_lvt     l=1     w=5     m=8
-xmn2    net2    net1    q2      gnd     sky130_fd_pr__nfet_01v8_lvt     l=1     w=5     m=8
-
-*** start-upcircuit
-xmp4    net4    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=1
-xmp5    net5    net2    net4    vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=1
-xmp6    net7    net6    net2    vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=2
-xmn3    net6    net6    net8    gnd     sky130_fd_pr__nfet_01v8_lvt     l=7     w=1     m=1
-xmn4    net8    net8    gnd     gnd     sky130_fd_pr__nfet_01v8_lvt     l=7     w=1     m=1
-
-*** bjt definition
-xqp1    gnd     gnd     qp1             sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
-xqp2    gnd     gnd     qp2          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=8
-xqp3    gnd     gnd     qp3          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
-
-*** high-poly resistance definition
-xra1    ra1     na1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra2    na1     na2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra3    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra4    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb1    vref    nb1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb2    nb1     nb2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb3    nb2     nb3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb4    nb3     nb4     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb5    nb4     nb5     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb6    nb5     nb6     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb7    nb6     nb7     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb8    nb7     nb8     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb9    nb8     nb9     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb10   nb9     nb10    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb11   nb10    nb11    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb12   nb11    nb12    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb13   nb12    nb13    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb14   nb13    nb14    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb15   nb14    nb15    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb16   nb15    nb16    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb17   nb16    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb18   nb16    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-
-*** voltage source for current measurement
-vid1    q1      qp1     dc      0
-vid2    q2      ra1     dc      0
-vid3    net3    vref    dc      0
-vid4    net7    net1    dc      0
-vid5    net5    net6    dc      0
-
-*** supply voltage
-vsup    vdd     gnd     dc      2
-*.dc    vsup    0       3.3     0.3.3
-.dc     temp    -40     125     5
-
-*vsup   vdd     gnd     pulse   0       2       10n     1u      1u      1m      100u
-*.tran  5n      10u
-
-.control
-run
-
-plot v(vdd) v(net1) v(net2) v(qp1) v(ra1) v(qp2) v(vref) v(qp3)
-plot vid1#branch vid2#branch vid3#branch vid4#branch vid5#branch
-
-.endc
-.end
-```
-<img width="1530" height="698" alt="Screenshot 2025-10-31 173959" src="https://github.com/user-attachments/assets/f10be323-9177-4953-a5e4-badaa7a12ef2" />
-<img width="861" height="663" alt="Screenshot 2025-10-31 174112" src="https://github.com/user-attachments/assets/94d77d82-baee-44ae-83d6-a4ea4626ffac" />
-Tempco. Of Vref = ~21.7 PPM
-
-### Behaviour in FF corner
-``` spice
-**** bandgap reference circuit using self-biase current mirror at ff corner*****
-
-.lib "/opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice ff"
-
-.global vdd gnd
-.temp 27
-
-*** circuit definition ***
-
-*** mosfet definitions self-biased current mirror and output branch
-xmp1    net1    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmp2    net2    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmp3    net3    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmn1    net1    net1    q1      gnd     sky130_fd_pr__nfet_01v8_lvt     l=1     w=5     m=8
-xmn2    net2    net1    q2      gnd     sky130_fd_pr__nfet_01v8_lvt     l=1     w=5     m=8
-
-*** start-upcircuit
-xmp4    net4    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=1
-xmp5    net5    net2    net4    vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=1
-xmp6    net7    net6    net2    vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=2
-xmn3    net6    net6    net8    gnd     sky130_fd_pr__nfet_01v8_lvt     l=7     w=1     m=1
-xmn4    net8    net8    gnd     gnd     sky130_fd_pr__nfet_01v8_lvt     l=7     w=1     m=1
-
-*** bjt definition
-xqp1    gnd     gnd     qp1             sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
-xqp2    gnd     gnd     qp2          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=8
-xqp3    gnd     gnd     qp3          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
-
-*** high-poly resistance definition
-xra1    ra1     na1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra2    na1     na2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra3    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra4    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb1    vref    nb1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb2    nb1     nb2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb3    nb2     nb3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb4    nb3     nb4     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb5    nb4     nb5     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb6    nb5     nb6     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb7    nb6     nb7     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb8    nb7     nb8     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb9    nb8     nb9     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb10   nb9     nb10    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb11   nb10    nb11    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb12   nb11    nb12    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb13   nb12    nb13    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb14   nb13    nb14    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb15   nb14    nb15    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb16   nb15    nb16    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb17   nb16    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb18   nb16    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-
-*** voltage source for current measurement
-vid1    q1      qp1     dc      0
-vid2    q2      ra1     dc      0
-vid3    net3    vref    dc      0
-vid4    net7    net1    dc      0
-vid5    net5    net6    dc      0
-
-*** supply voltage
-vsup    vdd     gnd     dc      2
-*.dc    vsup    0       3.3     0.3.3
-.dc     temp    -40     125     5
-
-*vsup   vdd     gnd     pulse   0       2       10n     1u      1u      1m      100u
-*.tran  5n      10u
-.control
-run
-
-plot v(vdd) v(net1) v(net2) v(qp1) v(ra1) v(qp2) v(vref) v(qp3)
-plot vid1#branch vid2#branch vid3#branch vid4#branch vid5#branch
-
-.endc
-.end
-`````
-<img width="799" height="698" alt="Screenshot 2025-10-30 150616" src="https://github.com/user-attachments/assets/19282c78-5c5c-411f-a69f-4e25440c206d" />
-
-Tempco. Of Vref = ~10 PPM
-### Behaviour in ss corner
-``` spice
-**** bandgap reference circuit using self-biase current mirror at ss corner****
-
-.lib "/opt/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice ss"
-
-.global vdd gnd
-.temp 27
-
-*** circuit definition ***
-
-*** mosfet definitions self-biased current mirror and output branch
-xmp1	net1	net2	vdd	vdd	sky130_fd_pr__pfet_01v8_lvt	l=2	w=5	m=4
-xmp2    net2    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5    	m=4
-xmp3    net3    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=4
-xmn1    net1    net1    q1      gnd     sky130_fd_pr__nfet_01v8_lvt     l=1     w=5     m=8
-xmn2    net2    net1    q2      gnd     sky130_fd_pr__nfet_01v8_lvt     l=1     w=5     m=8
-
-*** start-upcircuit
-xmp4    net4    net2    vdd     vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=1
-xmp5    net5    net2    net4    vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=1
-xmp6    net7    net6    net2    vdd     sky130_fd_pr__pfet_01v8_lvt     l=2     w=5     m=2
-xmn3    net6    net6    net8    gnd     sky130_fd_pr__nfet_01v8_lvt     l=7     w=1     m=1
-xmn4    net8    net8    gnd     gnd     sky130_fd_pr__nfet_01v8_lvt     l=7     w=1     m=1
-
-*** bjt definition
-xqp1	gnd	gnd	qp1		sky130_fd_pr__pnp_05v5_W3p40L3p40	m=1
-xqp2    gnd     gnd     qp2          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=8
-xqp3    gnd     gnd     qp3          sky130_fd_pr__pnp_05v5_W3p40L3p40       m=1
-
-*** high-poly resistance definition
-xra1	ra1	na1	vdd	sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra2	na1     na2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra3    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xra4    na2     qp2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-
-xrb1    vref    nb1     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb2    nb1     nb2     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb3    nb2     nb3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb4    nb3     nb4     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb5    nb4     nb5     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb6    nb5     nb6     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb7    nb6     nb7     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb8    nb7     nb8     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb9    nb8     nb9     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb10   nb9     nb10    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb11   nb10    nb11    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb12   nb11    nb12    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb13   nb12    nb13    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb14   nb13    nb14    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb15   nb14    nb15    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb16   nb15    nb16    vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb17   nb16    qp3   	vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-xrb18   nb16    qp3     vdd     sky130_fd_pr__res_high_po_1p41     w=1.41  l=7.8
-
-*** voltage source for current measurement
-vid1	q1	qp1	dc	0
-vid2    q2      ra1     dc      0
-vid3    net3    vref    dc      0
-vid4    net7	net1	dc	0
-vid5	net5	net6	dc	0
-
-*** supply voltage
-vsup	vdd	gnd	dc 	2
-*.dc	vsup	0	3.3	0.3.3
-.dc	temp	-40	125	5
-
-*vsup	vdd	gnd	pulse	0	2	10n	1u	1u	1m	100u
-*.tran	5n	10u
-
-.control
-run
-
-plot v(vdd) v(net1) v(net2) v(qp1) v(ra1) v(qp2) v(vref) v(qp3)
-plot vid1#branch vid2#branch vid3#branch vid4#branch vid5#branch
-
-.endc
-.end
-
-```
-<img width="843" height="706" alt="Screenshot 2025-10-30 150017" src="https://github.com/user-attachments/assets/9394d754-b91d-4c96-92a2-56527d8950fe" />
-Tempco. Of Vref = ~45 PPM
 
 ## 4. Layout Design
 
@@ -1015,9 +716,7 @@ We are going to use the **Magic VLSI tool** for our layout design.
 
 #### 🧭 To launch Magic, open your terminal and run the following command:
 
-<img width="947" height="387" alt="Screenshot 2025-10-31 181207" src="https://github.com/user-attachments/assets/6cd24eb2-8089-404f-82d8-780a6b3eea2a" />
-
-Now it will open up two windows, those are tkcon.tcl and toplevel. Now let's discuss some basic magic tool operations.
+It will open up two windows, those are tkcon.tcl and toplevel. Now let's discuss some basic magic tool operations.
 ```bash
 g : grid on/off
 z : zoom in
@@ -1093,11 +792,6 @@ The layout is carefully optimized to maintain **symmetry**, **matching accuracy*
    - All gates are oriented in the **same direction** for consistent channel stress.  
    - Source and drain regions are shared between adjacent devices to reduce area and parasitics.
 
-``` bash
-@chandranshu24-hue ➜ /workspaces/vsd-bandgap/bandgap/layout (main) $ magic -T sky130A.tech  nfets.mag
-```
-<img width="1217" height="740" alt="Screenshot 2025-10-31 002351" src="https://github.com/user-attachments/assets/eecfadfc-acda-40c4-9be8-7af5c9211610" />
-
 ### 4.2.2 Design of PFETs
 
 We have designed the **PFET layout block** by grouping all PFETs together in a symmetric and well-matched arrangement.  
@@ -1122,18 +816,20 @@ The layout emphasizes **device matching**, **isolation**, and **robustness again
 5. **Orientation Consistency:**  
    - All gates are aligned in the same direction for uniform channel characteristics and ease of routing.
 
-<img width="1236" height="667" alt="Screenshot 2025-10-31 002058" src="https://github.com/user-attachments/assets/01a4db12-5f16-4f17-95ee-1536df0de05f" />
 
 ### 4.2.3 Design of RESBANK
-<img width="1182" height="752" alt="Screenshot 2025-10-31 001816" src="https://github.com/user-attachments/assets/949707f0-c7f4-48fe-9b7b-95fca120175d" />
+
 
 ### 4.2.4 Design of PNP10
 We have created the layout by putting all the PNPs together, with appropriate matching, and used dummies to enhance noise performance.
-<img width="1196" height="690" alt="Screenshot 2025-10-31 003055" src="https://github.com/user-attachments/assets/e20f8fd8-f41c-48ee-bada-b260c337d161" />
+
 
 ### 4.2.5 Design of STARTERNFET
 We placed the the two w=1, l=7 NFETs together with a guardring to desingn the STATRTERNFET.
-<img width="962" height="315" alt="Screenshot 2025-10-31 182922" src="https://github.com/user-attachments/assets/646c5788-3ab0-45b7-9525-07e40c1bd7e6" />
+![WhatsApp Image 2025-11-01 at 00 28 06_88b54684](https://github.com/user-attachments/assets/2747a2f1-f13d-45aa-9444-ffa9f189ce3f)
+![WhatsApp Image 2025-11-01 at 00 29 09_7addd4dc](https://github.com/user-attachments/assets/7529f8aa-cf34-4e58-a118-536652232e80)
+![WhatsApp Image 2025-11-01 at 00 30 51_d0447991](https://github.com/user-attachments/assets/b7419784-b847-4b3e-924e-aaa920758e55)
+
 
 ### 4.4 TOP LEVEL DESIGN
 The **top-level layout** integrates all the sub-blocks of the Bandgap Reference (BGR) circuit — including NFETs, PFETs, resistor bank, BJT, and the startup circuit — into a single unified layout using **Magic VLSI**.
