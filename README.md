@@ -215,18 +215,6 @@ V_{REF} \approx 1.2 , \text{V}
 
 ---
 
-### **Summary**
-
-* **(V_{BE})** → CTAT component (decreases with temperature)
-* **(\Delta V_{BE})** → PTAT component (increases with temperature)
-* **Proper combination** → Stable reference voltage (~1.2 V)
-
-Thus, the **Bandgap Reference circuit** provides a **temperature-independent voltage**, making it an essential element in **precision analog and mixed-signal integrated circuits**.
-
----
-
-
-
 ####  Summary
 
 - **Diode / BJT junction** provides the **CTAT** component.  
@@ -388,7 +376,7 @@ This section outlines the **design targets**, **device models**, and **methodolo
 
 ---
 
-### ⚙️ **3.1 Design Specifications**
+###  **3.1 Design Specifications**
 
 | **Parameter**                         | **Target Value** |
 | ------------------------------------- | ---------------- |
@@ -403,7 +391,7 @@ This section outlines the **design targets**, **device models**, and **methodolo
 
 ---
 
-### 🔩 **3.2 Device Models (from SKY130 PDK)**
+###  **3.2 Device Models (from SKY130 PDK)**
 
 #### **1. MOSFET Devices**
 
@@ -625,7 +613,7 @@ This configuration allows the circuit to generate its own biasing currents witho
 | SS         | 1.192 V            | Slight drop due to lower drive strength        |
 | FF         | 1.214 V            | Slight increase due to higher transconductance |
 
-### 🖼️ **Simulation Outputs**
+###  **Simulation Outputs**
 
 <img width="600" src="https://github.com/user-attachments/assets/f9303e81-6a2c-4018-bfce-a52c592bc7ed" />  
 <img width="600" src="https://github.com/user-attachments/assets/6189e9b8-e9fb-43f3-b931-5e414235491c" />  
@@ -797,7 +785,7 @@ After DRC and LVS, the layout is extracted to include parasitic resistances and 
 These parasitics influence real-world circuit behavior and are necessary for **post-layout simulation**.
 
 **Figure 5.1 – DRC and LVS Verification Outputs** 
-<img width="1145" height="452" alt="Screenshot 2025-10-31 004007" src="https://github.com/user-attachments/assets/2ef1452c-77cc-42d6-a90c-89f782e5b1d0" /> <img width="942" height="705" alt="Screenshot 2025-10-31 004154" src="https://github.com/user-attachments/assets/ab5dfb95-d7f3-47c6-8e0f-69409b696b6d" />
+<img width="1145" height="452" alt="Screenshot 2025-10-31 004007" src="https://github.com/user-attachments/assets/2ef1452c-77cc-42d6-a90c-89f782e5b1d0" /> 
 
 ---
 
