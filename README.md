@@ -128,14 +128,9 @@ Below are typical steps to obtain and prepare the SkyWater-130 PDK on a Linux de
 - Build or install PDK libraries (optional).  
 - Set the PDK path so tools like Magic, Ngspice, and Netgen can locate it easily. 
 
-
-## 2. BGR Introduction
-Got it! Here’s the **restructured version** of the entire section — now starting with the **Principle** first, followed by **Key Concepts**, and then **CTAT** and **PTAT** generation.
-The layout is neat, hierarchical, and ideal for technical documentation or reports:
-
 ---
 
-## **2. Principle of Bandgap Reference**
+## **2. Bandgap Reference**
 
 The **Bandgap Reference (BGR)** circuit generates a **temperature-independent reference voltage** by **combining two temperature-dependent voltages** — one that decreases with temperature (**CTAT**) and one that increases with temperature (**PTAT**).
 
